@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const Header = styled.h1`
-  color: blue;
-  text-decoration: underline;
+import NavbarItem from "./Navbar";
+
+const Header = styled.div`
   cursor: pointer;
   font-family: sans-serif;
-`
+`;
 
 function App() {
   return (
     <Header>
-      Hello World!
+      <NavbarItem pages={["page1", "page2", "page3"]} />
     </Header>
   );
 }
