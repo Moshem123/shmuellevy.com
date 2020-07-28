@@ -1,19 +1,15 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "hdivider hdivider hdivider"
-    "sideimg content content"
-    "footer footer footer";
-  // grid-template-rows: 80vh;
-  grid-gap: 1rem;
-  align-items: stretch;
-  align-content: space-evenly;
-
-  font-family: sans-serif;
-  justify-content: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 80vw;
+  // justify-content: center;
+  margin: 0 auto;
+  & > * {
+    width: 80%;
+  }
 `;
 
 const VDivider = styled.div`
@@ -24,35 +20,25 @@ const VDivider = styled.div`
 `;
 
 const HDivider = styled.div`
-  grid-area: hdivider;
-  margin-top: 15px;
-  flex-basis: 100%;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 5%;
-    right: 5%;
-    width: 90%;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      rgb(48, 49, 51),
-      transparent
-    );
-  }
+  margin: 0.5em 0 1em 0;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    rgb(48, 49, 51),
+    transparent
+  );
 `;
 
 const Footer = styled.footer`
-  grid-area: footer;
   align-self: stretch;
   text-align: center;
 `;
 
 const Navbar = styled.ul`
-  grid-area: header;
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
@@ -68,12 +54,28 @@ const Navbar = styled.ul`
   }
 `;
 
+const NavItem = styled.li`
+  cursor: pointer;
+  color: rgb(0 0 0 / 65%);
+  transition: color 0.3s ease;
+  &:hover {
+    color: #000;
+  }
+`;
+
 const Content = styled.div`
-  grid-area: content;
+  padding: 1em;
 `;
 
-const SideImg = styled.div`
-  grid-area: sideimg;
-`;
+const SideImg = styled.div``;
 
-export { Wrapper, VDivider, HDivider, Footer, Navbar, Content, SideImg };
+export {
+  Wrapper,
+  VDivider,
+  HDivider,
+  Footer,
+  Navbar,
+  NavItem,
+  Content,
+  SideImg,
+};

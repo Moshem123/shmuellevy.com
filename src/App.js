@@ -1,24 +1,47 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import {
   Wrapper,
   VDivider,
   HDivider,
   Footer,
   Navbar,
+  NavItem,
   Content,
   SideImg,
 } from "./Navbar";
 
+import logo from "./logo.png";
+import "./hamburger.css";
+
 function App() {
+  const [hamClosed, hamToggle] = useState(true);
   const pages = ["page 1", "page 2", "page 3", "page 4"];
   return (
     <Wrapper>
+      <div
+        id="nav-icon3"
+        className={hamClosed ? "" : "open"}
+        onClick={() => hamToggle(!hamClosed)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <img
+        src={logo}
+        style={{
+          width: "30%",
+          marginTop: "1em",
+          height: "auto",
+        }}
+      />
       <Navbar>
         {pages.map((e, i) => {
           return (
             <>
-              <li>{e}</li>
+              <NavItem id={i}>{e}</NavItem>
               <VDivider />
             </>
           );
