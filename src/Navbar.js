@@ -1,32 +1,30 @@
-import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-`;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "hdivider hdivider hdivider"
+    "sideimg content content"
+    "footer footer footer";
+  // grid-template-rows: 80vh;
+  grid-gap: 1rem;
+  align-items: stretch;
+  align-content: space-evenly;
 
-const NavWrapper = styled.ul`
-  list-style-type: none;
-
-  display: inline-flex;
-  flex-flow: row wrap;
+  font-family: sans-serif;
   justify-content: center;
-  padding-bottom: 2px;
-  margin-top: 4%;
-
-  & li:not(:last-of-type) {
-    border-right: 1px solid black;
-  }
-
-  & li {
-    padding: 0.5rem 3rem;
-  }
 `;
 
-const Divider = styled.div`
-  position: relative;
-  height: 1px;
+const VDivider = styled.div`
+  border-left: 1px solid #38546d;
+  width: 1px;
+  right: 250px;
+  top: 10px;
+`;
+
+const HDivider = styled.div`
+  grid-area: hdivider;
   margin-top: 15px;
   flex-basis: 100%;
 
@@ -47,17 +45,35 @@ const Divider = styled.div`
   }
 `;
 
-function Navbar(props) {
-  return (
-    <Wrapper>
-      <NavWrapper>
-        {props.pages.map((e, i) => {
-          return <li>{e}</li>;
-        })}
-      </NavWrapper>
-      <Divider />
-    </Wrapper>
-  );
-}
+const Footer = styled.footer`
+  grid-area: footer;
+  align-self: stretch;
+  text-align: center;
+`;
 
-export default Navbar;
+const Navbar = styled.ul`
+  grid-area: header;
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  margin-top: 1em;
+  justify-content: space-evenly;
+
+  & li {
+    padding: 0.2rem 2.3rem;
+    height: 100%;
+  }
+  & > div:last-of-type {
+    display: none;
+  }
+`;
+
+const Content = styled.div`
+  grid-area: content;
+`;
+
+const SideImg = styled.div`
+  grid-area: sideimg;
+`;
+
+export { Wrapper, VDivider, HDivider, Footer, Navbar, Content, SideImg };
