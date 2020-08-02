@@ -1,54 +1,24 @@
-import React, { useState } from "react";
-import {
-  Wrapper,
-  VDivider,
-  HDivider,
-  Footer,
-  Navbar,
-  NavItem,
-  Content,
-  SideImg,
-} from "./Navbar";
+import React from "react";
+import MainGallery from "./MainGallery";
+import Navbar from "./Navbar";
+
+import "./styles/main.scss";
 
 import logo from "./logo.png";
-import "./hamburger.css";
+import smallLogo from "./logo-small.jpg";
 
 function App() {
-  const [hamClosed, hamToggle] = useState(true);
-  const pages = ["page 1", "page 2", "page 3", "page 4"];
   return (
-    <Wrapper>
-      <div
-        id="nav-icon3"
-        className={hamClosed ? "" : "open"}
-        onClick={() => hamToggle(!hamClosed)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <img
-        src={logo}
-        style={{
-          width: "30%",
-          marginTop: "1em",
-          height: "auto",
-        }}
-      />
-      <Navbar>
-        {pages.map((e, i) => {
-          return (
-            <>
-              <NavItem id={i}>{e}</NavItem>
-              <VDivider />
-            </>
-          );
-        })}
-      </Navbar>
-      <HDivider />
-      <Content>
+    <div className="main-wrapper">
+      {/* <Logo alt="Shmuel Levy" src={logo} /> */}
+      <picture>
+        <source srcSet={smallLogo} media="(max-width: 700px)" />
+        <img src={logo} className="logo" alt="Shmuel Levy" />
+      </picture>
+      <Navbar />
+      <div className="horizontal-divider" />
+      <MainGallery />
+      <div className="main-content">
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
@@ -66,10 +36,9 @@ function App() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-      </Content>
-      <SideImg>image here</SideImg>
-      <Footer>this is a footer</Footer>
-    </Wrapper>
+      </div>
+      <footer>this is a footer</footer>
+    </div>
   );
 }
 
