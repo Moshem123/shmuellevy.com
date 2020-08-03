@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./styles/carousel.scss";
 
-function Carousel({ photos, imageOnClick }) {
+function Carousel({ photos, imageOnClick, onImgChange }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const photosLen = photos.length;
+
+  const setCurrentSlideData = (index) => {
+    setCurrentSlide(index);
+    onImgChange(index);
+  };
 
   return (
     <div className="carousel">
@@ -22,8 +27,8 @@ function Carousel({ photos, imageOnClick }) {
         <button
           onClick={() =>
             currentSlide - 1 < 1
-              ? setCurrentSlide(photosLen)
-              : setCurrentSlide(currentSlide - 1)
+              ? setCurrentSlideData(photosLen)
+              : setCurrentSlideData(currentSlide - 1)
           }
           className="prev"
         >
@@ -32,8 +37,8 @@ function Carousel({ photos, imageOnClick }) {
         <button
           onClick={() =>
             currentSlide + 1 > photosLen
-              ? setCurrentSlide(1)
-              : setCurrentSlide(currentSlide + 1)
+              ? setCurrentSlideData(1)
+              : setCurrentSlideData(currentSlide + 1)
           }
           className="next"
         >
@@ -45,7 +50,7 @@ function Carousel({ photos, imageOnClick }) {
         {[...Array(photos.length).keys()].map((e) => (
           <span
             className={`dot ${e + 1 === currentSlide ? "active-dot" : ""}`}
-            onClick={() => setCurrentSlide(e + 1)}
+            onClick={() => setCurrentSlideData(e + 1)}
             key={e}
           ></span>
         ))}

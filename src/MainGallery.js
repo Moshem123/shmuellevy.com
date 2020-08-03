@@ -6,11 +6,17 @@ import Carousel from "./Carousel";
 
 function MainGallery() {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentImg, setCurrentImg] = useState(1);
 
   return (
     <>
-      <Carousel photos={photos} imageOnClick={() => setIsOpen(true)} />
+      <Carousel
+        photos={photos}
+        imageOnClick={() => setIsOpen(true)}
+        onImgChange={setCurrentImg}
+      />
       <ReactBnbGallery
+        activePhotoIndex={currentImg - 1}
         show={isOpen}
         photos={photos}
         onClose={() => setIsOpen(false)}

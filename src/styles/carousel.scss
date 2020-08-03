@@ -1,17 +1,4 @@
 .carousel {
-  .slides {
-    order: 2;
-    display: none;
-    &.active {
-      width: 60%;
-      height: 20vh;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
   .slideshow-container {
     display: flex;
     flex-direction: row;
@@ -19,8 +6,21 @@
     align-items: center;
 
     max-width: 1000px;
+    height: 40vh;
     margin: auto;
 
+    .slides {
+      order: 2;
+      display: none;
+      &.active {
+        width: 60%;
+        height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     button {
       &:first-of-type {
         order: 0;
@@ -31,8 +31,8 @@
     }
     img {
       vertical-align: middle;
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
     }
   }
 
