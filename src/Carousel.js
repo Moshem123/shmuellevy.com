@@ -19,7 +19,9 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
             key={i}
           >
             <div className="numbertext">{`${i + 1} / ${d.length}`}</div>
-            <img alt={e.caption} src={e.photo} onClick={imageOnClick} />
+            <div className="imgContainer">
+              <img alt={e.caption} src={e.photo} onClick={imageOnClick} />
+            </div>
             <div className="text">{e.caption}</div>
           </div>
         ))}
