@@ -2,11 +2,13 @@
   .slideshow-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     max-width: 1000px;
     height: 42vh;
+    width: 50vw;
+    background-color: black;
     margin: auto;
 
     .slides {
@@ -58,12 +60,7 @@
     }
   }
 
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .prev,
-  .next {
+  .carousel-control {
     cursor: pointer;
     width: auto;
     height: 100%;
@@ -77,10 +74,6 @@
     user-select: none;
     outline: none;
     z-index: 1;
-  }
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
   }
   .prev:focus,
   .next:focus {

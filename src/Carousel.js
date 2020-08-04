@@ -32,7 +32,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
               ? setCurrentSlideData(photosLen)
               : setCurrentSlideData(currentSlide - 1)
           }
-          className="prev"
+          className="carousel-control prev"
         >
           &#10094;
         </button>
@@ -42,7 +42,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
               ? setCurrentSlideData(1)
               : setCurrentSlideData(currentSlide + 1)
           }
-          className="next"
+          className="carousel-control next"
         >
           &#10095;
         </button>
