@@ -1,14 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./styles/carousel.scss";
 
 function Carousel({ photos, imageOnClick, onImgChange }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const photosLen = photos.length;
 
-  const setCurrentSlideData = (index) => {
+  const setCurrentSlideData = useCallback((slide) => {
+    console.log("setCurrentSlideData called");
+    let index = slide;
+    if (slide > photosLen) {
+      index = 1;
+    } else if (slide < 1) {
+      index = photosLen;
+    }
+
     setCurrentSlide(index);
     onImgChange(index);
-  };
+  });
+
+  const handleUserKeyPress = useCallback((e) => {
+    if (e.code === "ArrowLeft") {
+      setCurrentSlideData(currentSlide - 1);
+    }
+    if (e.code === "ArrowRight") {
+      setCurrentSlideData(currentSlide + 1);
+    }
+  });
+
+  useEffect(() => {
+    console.log("use effect called");
+    window.addEventListener("keydown", handleUserKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   return (
     <div className="carousel">
@@ -22,26 +48,20 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
             <div className="imgContainer">
               <img alt={e.caption} src={e.photo} onClick={imageOnClick} />
             </div>
-            <div className="text">{e.caption}</div>
+            <div className={`text ${e.caption ? "shown" : ""}`}>
+              {e.caption}
+            </div>
           </div>
         ))}
 
         <button
-          onClick={() =>
-            currentSlide - 1 < 1
-              ? setCurrentSlideData(photosLen)
-              : setCurrentSlideData(currentSlide - 1)
-          }
+          onClick={() => setCurrentSlideData(currentSlide - 1)}
           className="carousel-control prev"
         >
           &#10094;
         </button>
         <button
-          onClick={() =>
-            currentSlide + 1 > photosLen
-              ? setCurrentSlideData(1)
-              : setCurrentSlideData(currentSlide + 1)
-          }
+          onClick={() => setCurrentSlideData(currentSlide + 1)}
           className="carousel-control next"
         >
           &#10095;
