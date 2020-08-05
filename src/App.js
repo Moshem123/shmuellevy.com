@@ -14,7 +14,8 @@ function App() {
         <img src={logo} className="logo" alt="Shmuel Levy" />
         <Navbar />
       </header>
-      <div className="horizontal-divider" />
+      {/* <div className="horizontal-divider" /> */}
+      <hr />
       <MainGallery />
       <div className="main-content">
         <p>
