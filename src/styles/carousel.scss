@@ -72,9 +72,10 @@
         & > img {
           cursor: pointer;
           vertical-align: middle;
-          max-width: 100%;
-          max-height: 100%;
+          // max-width: 100%;
+          // max-height: 100%;
           overflow: hidden;
+          object-fit: contain;
         }
       }
     }
@@ -93,7 +94,7 @@
       border: none;
       user-select: none;
       outline: none;
-      z-index: 2;
+      z-index: 1;
 
       &:hover {
         background-color: rgba(0, 0, 0, 0.4);
@@ -110,6 +111,7 @@
         grid-column: 3;
         grid-row: 1;
       }
+
     }
   }
 
@@ -127,8 +129,7 @@
       display: inline-block;
       transition: background-color 0.6s ease;
 
-      &.active-dot,
-      &:hover {
+      &.active-dot, &:hover {
         background-color: #717171;
       }
     }

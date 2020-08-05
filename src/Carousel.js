@@ -5,36 +5,39 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const photosLen = photos.length;
 
-  const setCurrentSlideData = useCallback((slide) => {
-    console.log("setCurrentSlideData called");
+  const getDesiredIndex = (slide) => {
     let index = slide;
     if (slide > photosLen) {
       index = 1;
     } else if (slide < 1) {
       index = photosLen;
     }
+    return index;
+  };
 
-    setCurrentSlide(index);
-    onImgChange(index);
-  });
-
-  const handleUserKeyPress = useCallback((e) => {
-    if (e.code === "ArrowLeft") {
-      setCurrentSlideData(currentSlide - 1);
-    }
-    if (e.code === "ArrowRight") {
-      setCurrentSlideData(currentSlide + 1);
-    }
-  });
+  useEffect(() => {
+    onImgChange(currentSlide);
+    return () => {
+      onImgChange(1);
+    };
+  }, [currentSlide]);
 
   useEffect(() => {
     console.log("use effect called");
+    function handleUserKeyPress(e) {
+      if (e.code === "ArrowLeft") {
+        setCurrentSlide((prev) => getDesiredIndex(prev - 1));
+      }
+      if (e.code === "ArrowRight") {
+        setCurrentSlide((prev) => getDesiredIndex(prev + 1));
+      }
+    }
     window.addEventListener("keydown", handleUserKeyPress);
 
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
-  }, [handleUserKeyPress]);
+  }, []);
 
   return (
     <div className="carousel">
@@ -55,13 +58,13 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
         ))}
 
         <button
-          onClick={() => setCurrentSlideData(currentSlide - 1)}
+          onClick={() => setCurrentSlide((prev) => getDesiredIndex(prev - 1))}
           className="carousel-control prev"
         >
           &#10094;
         </button>
         <button
-          onClick={() => setCurrentSlideData(currentSlide + 1)}
+          onClick={() => setCurrentSlide((prev) => getDesiredIndex(prev + 1))}
           className="carousel-control next"
         >
           &#10095;
@@ -72,7 +75,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
         {[...Array(photos.length).keys()].map((e) => (
           <span
             className={`dot ${e + 1 === currentSlide ? "active-dot" : ""}`}
-            onClick={() => setCurrentSlideData(e + 1)}
+            onClick={() => setCurrentSlide(e + 1)}
             key={e}
           ></span>
         ))}
