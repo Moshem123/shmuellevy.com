@@ -4,18 +4,16 @@ import Navbar from "./Navbar";
 
 import "./styles/main.scss";
 
-import logo from "./logo.png";
-import smallLogo from "./logo-small.jpg";
+import logo from "./logo.jpg";
 
 function App() {
   return (
     <div className="main-wrapper">
       {/* <Logo alt="Shmuel Levy" src={logo} /> */}
-      <picture>
-        <source srcSet={smallLogo} media="(max-width: 700px)" />
+      <header>
         <img src={logo} className="logo" alt="Shmuel Levy" />
-      </picture>
-      <Navbar />
+        <Navbar />
+      </header>
       <div className="horizontal-divider" />
       <MainGallery />
       <div className="main-content">

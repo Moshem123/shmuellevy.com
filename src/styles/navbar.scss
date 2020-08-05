@@ -5,6 +5,8 @@
   --menu-speed: 0.75s;
 }
 
+$animate: all 0.2s ease-in-out;
+
 /* Hamburger STYLES */
 .menu-wrap {
   position: fixed;
@@ -145,10 +147,10 @@
     font-size: 1.5rem;
     padding: 1rem;
   }
-
 }
 
 .full-menu {
+  width: 80%;
   display: none;
   margin-top: 1em;
   @media only screen and (min-width: 700px) {
@@ -160,6 +162,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-flow: row-reverse nowrap;
   }
   .vertical-divider {
     border-left: 1px solid #38546d;
@@ -182,3 +185,4 @@ a.menu-link {
     opacity: 1;
   }
 }
+
