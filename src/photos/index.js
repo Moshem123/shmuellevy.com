@@ -8,7 +8,7 @@ import photo7 from "./photo7.jpg";
 
 export default [
   { photo: photo1, caption: "some caption" },
-  { photo: photo2, caption: "some caption" },
+  { photo: photo2, caption: "" },
   { photo: photo3, caption: "some caption" },
   { photo: photo4, caption: "some caption" },
   { photo: photo5, caption: "some caption" },
