@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/carousel.scss";
 
 function Carousel({ photos, imageOnClick, onImgChange }) {
@@ -20,7 +20,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
     return () => {
       onImgChange(1);
     };
-  }, [currentSlide]);
+  }, [currentSlide, onImgChange]);
 
   useEffect(() => {
     console.log("use effect called");
@@ -37,6 +37,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
