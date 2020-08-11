@@ -12,7 +12,7 @@ header {
   }
 
   .social {
-    margin: 0 2vw;
+    margin: 0 1.5vw;
 
     svg {
       width: 24px;
@@ -27,9 +27,24 @@ header {
     .facebook svg {
       fill: rgb(58, 92, 169);
     }
-
-    @media only screen and (min-width: 700px) {
-      margin-bottom: 0;
+  }
+  @media only screen and (max-width: 700px) {
+    margin-bottom: 0;
+    flex-flow: column nowrap;
+    .logo-link {
+      order:-1;
+    }
+    .social {
+      margin: 2vh 0;
+      display: flex;
+      flex-flow: row nowrap;
+      div {
+        margin: 0 2vw;
+      }
+      svg {
+        height: 40px;
+        width: 40px;
+      }
     }
   }
 }
