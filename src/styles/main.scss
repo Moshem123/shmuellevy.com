@@ -14,22 +14,6 @@
     margin: 2vh 0;
   }
 
-  header {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-    width: 80%;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    > img {
-      max-width: 150px;
-      float: left;
-    }
-    @media only screen and (min-width: 700px) {
-      margin-bottom: 0;
-    }
-  }
 
   .main-body {
     display: flex;
@@ -46,13 +30,33 @@
 
     .main-content {
       padding: 3vh 0;
+      text-align: right;
+      direction: rtl;
+
+      p {
+        margin-bottom: 3vh;
+      }
+
+      .profile-img {
+        border-style: none;
+        object-fit: contain;
+        max-width: 100%;
+        width: 40vh;
+        float: left;
+      }
     }
   }
 
   footer {
-    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin-bottom: 3vh;
+    width: 100%;
+    height: 15vh;
+    color: #fff;
+    background: #000;
   }
 
   @media only screen and (max-width: 700px) {

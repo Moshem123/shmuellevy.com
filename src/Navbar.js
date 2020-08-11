@@ -2,7 +2,7 @@ import React from "react";
 import pages from "./data/pages";
 import "./styles/navbar.scss";
 
-function Navbar({ children }) {
+function Navbar() {
   return (
     <>
       <div className="full-menu">
