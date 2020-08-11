@@ -6,40 +6,57 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   background-color: #fff;
   width: 80vw;
-  // justify-content: center;
   margin: 0 auto;
-  & > * {
-    width: 80%;
-  }
 
   hr {
     width: 100%;
-    // color: rgba(0, 0, 0, 0.2);
-    // background-color: rgba(0, 0, 0, 0.2);
     opacity: 0.4;
-    margin: 4vh 0;
+    margin: 2vh 0;
   }
 
-  header {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+
+  .main-body {
     display: flex;
-    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    align-items: center;
+    flex-flow: column nowrap;
+
+    & > * {
+      width: 80%;
+    }
+
+    .main-content {
+      padding: 3vh 0;
+      text-align: right;
+      direction: rtl;
+
+      p {
+        margin-bottom: 3vh;
+      }
+
+      .profile-img {
+        border-style: none;
+        object-fit: contain;
+        max-width: 100%;
+        width: 40vh;
+        float: left;
+      }
+    }
+  }
+
+  footer {
+    display: flex;
     align-items: center;
     justify-content: center;
-    > img {
-      max-width: 150px;
-    }
-    @media only screen and (min-width: 700px) {
-      margin-bottom: 0;
-    }
-  }
-
-  .main-content {
-    padding: 1em 4em;
-    @media only screen and (max-width: 700px) {
-      padding: 1em 0.7em;
-    }
+    text-align: center;
+    margin-bottom: 3vh;
+    width: 100%;
+    height: 15vh;
+    color: #fff;
+    background: #000;
   }
 
   @media only screen and (max-width: 700px) {
@@ -48,36 +65,4 @@
       width: 100%;
     }
   }
-}
-
-// picture {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   & > .logo {
-//     width: 30%;
-//     margin-top: 1em;
-//     height: auto;
-//   }
-// }
-
-.horizontal-divider {
-  margin: 0.5em 0 1em 0;
-  height: 1px;
-  display: none;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    rgb(48, 49, 51),
-    transparent
-  );
-
-  @media only screen and (min-width: 700px) {
-    display: block;
-  }
-}
-
-footer {
-  align-self: stretch;
-  text-align: center;
 }

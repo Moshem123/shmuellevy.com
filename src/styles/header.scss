@@ -1,0 +1,35 @@
+header {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  width: 80%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  .logo {
+    max-width: 150px;
+    float: left;
+  }
+
+  .social {
+    margin: 0 2vw;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .whatsapp svg {
+      fill: rgb(80, 248, 110);
+    }
+
+    .facebook svg {
+      fill: rgb(58, 92, 169);
+    }
+
+    @media only screen and (min-width: 700px) {
+      margin-bottom: 0;
+    }
+  }
+}

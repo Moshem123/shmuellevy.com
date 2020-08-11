@@ -1,35 +1,35 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/carousel.scss";
+
+function getDesiredIndex(slide, photosLen) {
+  let index = slide;
+  if (slide > photosLen) {
+    index = 1;
+  } else if (slide < 1) {
+    index = photosLen;
+  }
+  return index;
+}
 
 function Carousel({ photos, imageOnClick, onImgChange }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const photosLen = photos.length;
-
-  const getDesiredIndex = (slide) => {
-    let index = slide;
-    if (slide > photosLen) {
-      index = 1;
-    } else if (slide < 1) {
-      index = photosLen;
-    }
-    return index;
-  };
 
   useEffect(() => {
     onImgChange(currentSlide);
     return () => {
       onImgChange(1);
     };
-  }, [currentSlide]);
+  }, [currentSlide, onImgChange]);
 
   useEffect(() => {
     console.log("use effect called");
     function handleUserKeyPress(e) {
       if (e.code === "ArrowLeft") {
-        setCurrentSlide((prev) => getDesiredIndex(prev - 1));
+        setCurrentSlide((prev) => getDesiredIndex(prev - 1, photosLen));
       }
       if (e.code === "ArrowRight") {
-        setCurrentSlide((prev) => getDesiredIndex(prev + 1));
+        setCurrentSlide((prev) => getDesiredIndex(prev + 1, photosLen));
       }
     }
     window.addEventListener("keydown", handleUserKeyPress);
@@ -37,6 +37,7 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
     return () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -58,13 +59,17 @@ function Carousel({ photos, imageOnClick, onImgChange }) {
         ))}
 
         <button
-          onClick={() => setCurrentSlide((prev) => getDesiredIndex(prev - 1))}
+          onClick={() =>
+            setCurrentSlide((prev) => getDesiredIndex(prev - 1, photosLen))
+          }
           className="carousel-control prev"
         >
           &#10094;
         </button>
         <button
-          onClick={() => setCurrentSlide((prev) => getDesiredIndex(prev + 1))}
+          onClick={() =>
+            setCurrentSlide((prev) => getDesiredIndex(prev + 1, photosLen))
+          }
           className="carousel-control next"
         >
           &#10095;
